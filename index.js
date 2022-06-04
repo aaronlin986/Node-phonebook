@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 const {nanoid} = require('nanoid');
 const morgan = require('morgan');
 const express = require('express');
