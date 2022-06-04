@@ -3,9 +3,10 @@ const {nanoid} = require('nanoid');
 const morgan = require('morgan');
 const express = require('express');
 const app = express();
+const Person = require('./models/person');
+
 app.use(express.static('build'));
 app.use(express.json());
-const Person = require('./models/person');
 
 morgan.token('content', (req, res) => {
     return JSON.stringify(req.body);
@@ -47,7 +48,6 @@ let persons = [
 app.get('/info', (request, response) => {
     Person.estimatedDocumentCount({})
         .then(result => {
-            console.log(result);
             response.send(`
                 <p>Phonebook has info for ${result} people.</p>
                 <p>${new Date}</p>
